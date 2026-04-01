@@ -1,3 +1,5 @@
 numpy
 requests
 tqdm
+ipykernel
+pandas
