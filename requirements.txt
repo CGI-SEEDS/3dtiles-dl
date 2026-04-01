@@ -3,3 +3,8 @@ requests
 tqdm
 ipykernel
 pandas
+trimesh
+pyvista
+matplotlib
+pillow
+rtree
