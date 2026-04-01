@@ -6,7 +6,11 @@ class Tile:
         self.uri = uri
         self._data = data
         self.basename = uri.rsplit('/', 1)[-1][:-4]
-        self.name = base64.decodebytes(f"{self.basename}==".encode()).decode("utf-8")
+        try:
+            self.name = base64.decodebytes(f"{self.basename}==".encode()).decode("utf-8")
+        except (UnicodeDecodeError, ValueError):
+            # Fall back to basename if base64 decoding fails or result isn't valid UTF-8
+            self.name = self.basename
         self._download = download_thunk
 
     def __repr__(self):
