@@ -222,4 +222,5 @@ tiles/
 .env
 .vscode/
 *.code-workspace
+data/arthur_seat_tiles/
 
