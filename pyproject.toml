@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tiles3d-dl"
+version = "0.1.0"
+description = "Download 3D tiles from Google Maps 3D Tiles API"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "numpy",
+    "requests",
+    "tqdm",
+    "python-dotenv",
+]
+
+[project.optional-dependencies]
+viz = [
+    "pandas",
+    "trimesh",
+    "pyvista",
+    "matplotlib",
+    "pillow",
+    "rtree",
+]
+notebook = [
+    "ipykernel",
+    "pandas",
+]
+dev = [
+    "ipykernel",
+    "pandas",
+    "trimesh",
+    "pyvista",
+    "matplotlib",
+    "pillow",
+    "rtree",
+]
+
+[project.scripts]
+download-tiles = "scripts.download_tiles:main"
+download-tiles-geojson = "scripts.download_tiles_geojson:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "scripts*"]
+
+[tool.setuptools.package-data]
+src = ["py.typed"]
