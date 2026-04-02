@@ -8,3 +8,4 @@ pyvista
 matplotlib
 pillow
 rtree
+python-dotenv
