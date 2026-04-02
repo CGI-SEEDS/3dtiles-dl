@@ -19,14 +19,14 @@ def _get_elevation(lon, lat, key):
         }
     )
     if not res.ok:
-        raise RuntimeError(f"response not ok: {response.status_code}, {response.text}")
+        raise RuntimeError(f"response not ok: {res.status_code}, {res.text}")
     data = res.json()
     if not data["status"] == "OK" or "results" not in data:
         raise RuntimeError(f"status not ok: {data['status']}, {data}")
     return data["results"][0]["elevation"]
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-k", "--api-key",
                         help="your Google Maps 3d Tiles API key",
@@ -64,3 +64,8 @@ if __name__ == "__main__":
     for i, t in tqdm(enumerate(tiles), total=len(tiles)):
         with open(outdir / Path(f"{t.basename}.glb"), "wb") as f:
             f.write(t.data)
+
+
+if __name__ == "__main__":
+    main()
+
